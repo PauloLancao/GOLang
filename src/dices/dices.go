@@ -29,9 +29,9 @@ func rollDicesNTimes() []int {
 
 	for {
 		r1, err := rollDices()
-		r2, err := rollDices()
+		r2, err1 := rollDices()
 
-		if err == nil {
+		if err == nil && err1 == nil {
 			resultRollDices[dicesCount] = r1 + r2
 			dicesCount++
 			if dicesCount == rollDicesMax {
