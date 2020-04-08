@@ -1,4 +1,4 @@
-package main
+package arraysiteration
 
 import "fmt"
 
@@ -14,7 +14,7 @@ func reverseOrder(arr []int) {
 	}
 }
 
-func naturalOrderSumOdd(arr []int) {
+func naturalOrderSumOdd(arr []int) int {
 	var sum int = 0
 	for number := range arr {
 		if arr[number]%2 != 0 {
@@ -22,10 +22,10 @@ func naturalOrderSumOdd(arr []int) {
 		}
 	}
 
-	fmt.Println("\nSum odd numbers: ", sum)
+	return sum
 }
 
-func reverseOrderSumOdd(arr []int) {
+func reverseOrderSumOdd(arr []int) int {
 	var sum int = 0
 	for number := range arr {
 		if arr[len(arr)-1-number]%2 != 0 {
@@ -33,10 +33,10 @@ func reverseOrderSumOdd(arr []int) {
 		}
 	}
 
-	fmt.Println("\nReverse Sum odd numbers: ", sum)
+	return sum
 }
 
-func naturalOrderSumEven(arr []int) {
+func naturalOrderSumEven(arr []int) int {
 	var sum int = 0
 	for number := range arr {
 		if arr[number]%2 == 0 {
@@ -44,10 +44,10 @@ func naturalOrderSumEven(arr []int) {
 		}
 	}
 
-	fmt.Println("\nSum even numbers: ", sum)
+	return sum
 }
 
-func reverseOrderSumEven(arr []int) {
+func reverseOrderSumEven(arr []int) int {
 	var sum int = 0
 	for number := range arr {
 		if arr[len(arr)-1-number]%2 == 0 {
@@ -55,7 +55,7 @@ func reverseOrderSumEven(arr []int) {
 		}
 	}
 
-	fmt.Println("\nReverse Sum even numbers: ", sum)
+	return sum
 }
 
 // Create program that initialises an array with the integer values 1 to 10.
@@ -71,9 +71,9 @@ func main() {
 	fmt.Println("\nArray reverse order:")
 	reverseOrder(arr)
 
-	naturalOrderSumOdd(arr)
-	reverseOrderSumOdd(arr)
+	fmt.Println("\nSum odd numbers: ", naturalOrderSumOdd(arr))
+	fmt.Println("\nReverse Sum odd numbers: ", reverseOrderSumOdd(arr))
 
-	naturalOrderSumEven(arr)
-	reverseOrderSumEven(arr)
+	fmt.Println("\nSum even numbers: ", naturalOrderSumEven(arr))
+	fmt.Println("\nReverse Sum even numbers: ", reverseOrderSumEven(arr))
 }
