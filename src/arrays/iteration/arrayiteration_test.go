@@ -1,4 +1,4 @@
-package arraysiteration
+package main
 
 import (
 	"testing"

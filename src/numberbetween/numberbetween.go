@@ -1,4 +1,4 @@
-package numberbetween
+package main
 
 import (
 	"bufio"
