@@ -1,4 +1,4 @@
-package numberbetween_test
+package numberbetween
 
 import (
 	"bytes"
