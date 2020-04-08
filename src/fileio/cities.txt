@@ -1,0 +1,1 @@
+["Abu Dhabi","London","Washington D.C.","Montevideo","Vatican City","Caracas","Hanoi"]
