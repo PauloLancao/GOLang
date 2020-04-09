@@ -13,5 +13,8 @@ go build xpto.go
 ## Run build package
 xpto or xpto.exe
 
+## Build and Run package
+go run .\schoolregister.go
+
 ## Run test from root directory were src and test packages are defined
 go test ./... 
