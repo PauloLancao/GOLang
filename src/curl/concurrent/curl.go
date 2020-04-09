@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// go run .\curl.go https://abola.pt https://golang.org http://gopl.io https://godoc.org https://abola.pt https://abola.pt https://abola.pt https://abola.pt https://abola.pt
 func main() {
 	start := time.Now()
 	ch := make(chan string)
