@@ -29,4 +29,5 @@ func main() {
 	idx := 4
 	fmt.Printf("Rotate array original \nLEFT -> %t: \nIdx -> %d \n%v \nresult: \n%v",
 		left, idx, r, rotate(r, idx, left))
+	fmt.Println("\nOriginal array: ", r)
 }
