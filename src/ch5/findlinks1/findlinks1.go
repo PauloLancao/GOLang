@@ -2,6 +2,7 @@
 package main
 
 import (
+	ch5 "ch5/ch5base"
 	"fmt"
 	"os"
 
@@ -14,7 +15,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "findlinks1: %v\n", err)
 		os.Exit(1)
 	}
-	for _, link := range visit(nil, doc) {
+	for _, link := range ch5.Visit(nil, doc) {
 		fmt.Println(link)
 	}
 }
