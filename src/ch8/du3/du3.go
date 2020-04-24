@@ -3,12 +3,12 @@ package main
 import (
 	"ch8/du"
 	"flag"
+	"sync"
 	"time"
 )
 
 var verbose = flag.Bool("v", false, "show verbose progress messages")
 
-// go run .\du2.go -v C:\
 func main() {
 	// Determine the initial directories.
 	flag.Parse()
@@ -17,12 +17,15 @@ func main() {
 		roots = []string{"."}
 	}
 
-	// Traverse the file tree.
+	// Traverse each root of the file tree in parallel.
 	fileSizes := make(chan int64)
+	var n sync.WaitGroup
+	for _, root := range roots {
+		n.Add(1)
+		go du.WalkDirRec(root, &n, fileSizes)
+	}
 	go func() {
-		for _, root := range roots {
-			du.WalkDir(root, fileSizes)
-		}
+		n.Wait()
 		close(fileSizes)
 	}()
 
