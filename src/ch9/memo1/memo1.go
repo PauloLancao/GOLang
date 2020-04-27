@@ -12,6 +12,7 @@ import (
 // A Memo caches the results of calling a Func.
 type Memo struct {
 	f     Func
+	mu    sync.Mutex // guards cache
 	cache map[string]result
 }
 
@@ -28,13 +29,41 @@ func New(f Func) *Memo {
 	return &Memo{f: f, cache: make(map[string]result)}
 }
 
-// NOTE: not concurrency-safe!
-// Get func
+// Get func NOTE: not concurrency-safe!
 func (memo *Memo) Get(key string) (interface{}, error) {
 	res, ok := memo.cache[key]
 	if !ok {
 		res.value, res.err = memo.f(key)
 		memo.cache[key] = res
+	}
+	return res.value, res.err
+}
+
+// Get2 func
+func (memo *Memo) Get2(key string) (interface{}, error) {
+	memo.mu.Lock()
+	res, ok := memo.cache[key]
+	if !ok {
+		res.value, res.err = memo.f(key)
+		memo.cache[key] = res
+	}
+	memo.mu.Unlock()
+	return res.value, res.err
+}
+
+// Get3 func
+func (memo *Memo) Get3(key string) (value interface{}, err error) {
+	memo.mu.Lock()
+	res, ok := memo.cache[key]
+	memo.mu.Unlock()
+	if !ok {
+		res.value, res.err = memo.f(key)
+
+		// Between the two critical sections, several goroutines
+		// may race to compute f(key) and update the map.
+		memo.mu.Lock()
+		memo.cache[key] = res
+		memo.mu.Unlock()
 	}
 	return res.value, res.err
 }
