@@ -33,7 +33,6 @@ func rollDicesChannel() {
 		rand.Seed(time.Now().UnixNano())
 
 		for {
-
 			go rollDices(rollRes1)
 			go rollDices(rollRes2)
 
