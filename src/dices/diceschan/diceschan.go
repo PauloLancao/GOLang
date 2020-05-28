@@ -21,7 +21,6 @@ func rollDicesChannel() {
 	rolls := make(chan int, rollDicesMax)
 
 	go func() {
-		var dicesCount int = 0
 		rollRes1 := make(chan int)
 		rollRes2 := make(chan int)
 
@@ -32,34 +31,28 @@ func rollDicesChannel() {
 		// Required to seed RND
 		rand.Seed(time.Now().UnixNano())
 
-		for {
+		for i := 0; i < rollDicesMax; i++ {
 			go rollDices(rollRes1)
 			go rollDices(rollRes2)
 
 			r1, r2 := <-rollRes1, <-rollRes2
 
 			rolls <- r1 + r2
-			dicesCount++
-			if dicesCount == rollDicesMax {
-				break
-			}
 		}
 	}()
 
 	// Consume the rolls channel
-	var c int = 1
 	for rolled := range rolls {
 		switch rolled {
 		case 7, 11:
-			fmt.Printf("IDX:%d DiceValue: %d, Outcome: %s\n", c, rolled, "NATURAL")
+			fmt.Printf("DiceValue: %d, Outcome: %s\n", rolled, "NATURAL")
 		case 2:
-			fmt.Printf("IDX:%d DiceValue: %d, Outcome: %s\n", c, rolled, "SNAKE-EYES-CRAPS")
+			fmt.Printf("DiceValue: %d, Outcome: %s\n", rolled, "SNAKE-EYES-CRAPS")
 		case 3, 12:
-			fmt.Printf("IDX:%d DiceValue: %d, Outcome: %s\n", c, rolled, "LOSS-CRAPS")
+			fmt.Printf("DiceValue: %d, Outcome: %s\n", rolled, "LOSS-CRAPS")
 		default:
-			fmt.Printf("IDX:%d DiceValue: %d, Outcome: %s\n", c, rolled, "NEUTRAL")
+			fmt.Printf("DiceValue: %d, Outcome: %s\n", rolled, "NEUTRAL")
 		}
-		c++
 	}
 }
 
