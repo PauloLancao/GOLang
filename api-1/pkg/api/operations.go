@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-chi/render"
 
-	m "github.com/PauloLancao/GOLang/api-1/pkg/middelware"
+	m "github.com/PauloLancao/GOLang/api-1/pkg/middleware"
 	"github.com/PauloLancao/GOLang/api-1/pkg/types"
 )
 
