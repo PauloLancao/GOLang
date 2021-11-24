@@ -1,4 +1,4 @@
-module github.com/api-1/v2
+module github.com/PauloLancao/GOLang/api-1
 
 go 1.17
 

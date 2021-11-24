@@ -9,7 +9,7 @@ import (
 	"github.com/ory/dockertest/v3"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/api-1/pkg/types"
+	"github.com/PauloLancao/GOLang/api-1/pkg/types"
 )
 
 var (

@@ -9,14 +9,14 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/api-1/pkg/types"
+	"github.com/PauloLancao/GOLang/api-1/pkg/types"
 
 	"github.com/go-chi/chi"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/zap"
 
-	"github.com/api-1/pkg/api/mocks"
+	"github.com/PauloLancao/GOLang/api-1/pkg/api/mocks"
 )
 
 var (
