@@ -37,7 +37,7 @@ curl -s http://localhost:8080/books \
     --request "GET"
 ```
 
-### Get book by id
+### Get book by Id
 ```
 curl -s http://localhost:8080/books/1 \
     --header "Content-Type: application/json" \
