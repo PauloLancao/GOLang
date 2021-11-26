@@ -21,7 +21,7 @@ choco install mingw
 
 ### Get sqlite3
 ```
-go get github.com/mattn/go-sqlite3
+go get -u github.com/mattn/go-sqlite3
 ```
 
 ### Update packages and run
