@@ -5,8 +5,8 @@ import (
 
 	"github.com/go-chi/render"
 
-	m "github.com/PauloLancao/Go/go-mod/pkg/middleware"
-	"github.com/PauloLancao/Go/go-mod/pkg/types"
+	m "github.com/PauloLancao/GOLang/mod/pkg/middleware"
+	"github.com/PauloLancao/GOLang/mod/pkg/types"
 )
 
 // GetArticle renders the article from the context

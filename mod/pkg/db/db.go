@@ -7,7 +7,7 @@ import (
 	// postgres blank import for gorm
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 
-	"github.com/PauloLancao/Go/go-mod/pkg/types"
+	"github.com/PauloLancao/GOLang/mod/pkg/types"
 )
 
 const (
